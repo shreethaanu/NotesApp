@@ -8,10 +8,10 @@
 import Foundation
 
 struct NotesList: Decodable {
-    let notes: [Notes]
+    let notes: [NotesData]
 }
 
-struct Notes: Decodable {
+struct NotesData: Decodable {
     let id: String
     let title: String
     let body: String
