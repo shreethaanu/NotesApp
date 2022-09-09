@@ -8,7 +8,7 @@
 import Foundation
 
 struct NotesList: Decodable {
-    let notes: [NotesData]
+    let notesData: [NotesData]
 }
 
 struct NotesData: Decodable {

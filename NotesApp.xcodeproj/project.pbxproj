@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E26B0B6628CBB88D003017C5 /* Notes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */; };
+		E26B0B6728CBB88D003017C5 /* Notes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */; };
+		E26B0B6928CBB921003017C5 /* NotesApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = E29C85DF28CB8D2600F49009 /* NotesApp.xcdatamodeld */; };
 		E29C85D728CB8D2600F49009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85D628CB8D2600F49009 /* AppDelegate.swift */; };
 		E29C85D928CB8D2600F49009 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85D828CB8D2600F49009 /* SceneDelegate.swift */; };
 		E29C85DB28CB8D2600F49009 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85DA28CB8D2600F49009 /* ViewController.swift */; };
 		E29C85DE28CB8D2600F49009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29C85DC28CB8D2600F49009 /* Main.storyboard */; };
-		E29C85E128CB8D2600F49009 /* NotesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E29C85DF28CB8D2600F49009 /* NotesApp.xcdatamodeld */; };
 		E29C85E328CB8D2700F49009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E29C85E228CB8D2700F49009 /* Assets.xcassets */; };
 		E29C85E628CB8D2700F49009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29C85E428CB8D2700F49009 /* LaunchScreen.storyboard */; };
 		E29C85F128CB8D2700F49009 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85F028CB8D2700F49009 /* NotesAppTests.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E29C85D328CB8D2600F49009 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E29C85D628CB8D2600F49009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E29C85D828CB8D2600F49009 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E26B0B6A28CBB96C003017C5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */,
+				E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		E29C85CA28CB8D2600F49009 = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +184,9 @@
 		E29C861128CB947E00F49009 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				E29C860A28CB8F7E00F49009 /* webService.swift */,
+				E26B0B6A28CBB96C003017C5 /* CoreData */,
 				E29C861228CB949500F49009 /* ImageUtility.swift */,
+				E29C860A28CB8F7E00F49009 /* webService.swift */,
 				E29C861828CB965600F49009 /* WebConstants.swift */,
 			);
 			path = Utilities;
@@ -297,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26B0B6928CBB921003017C5 /* NotesApp.xcdatamodeld in Resources */,
 				E29C85E628CB8D2700F49009 /* LaunchScreen.storyboard in Resources */,
 				E29C85E328CB8D2700F49009 /* Assets.xcassets in Resources */,
 				E29C85DE28CB8D2600F49009 /* Main.storyboard in Resources */,
@@ -327,9 +342,10 @@
 				E29C85DB28CB8D2600F49009 /* ViewController.swift in Sources */,
 				E29C861328CB949500F49009 /* ImageUtility.swift in Sources */,
 				E29C85D728CB8D2600F49009 /* AppDelegate.swift in Sources */,
+				E26B0B6628CBB88D003017C5 /* Notes+CoreDataClass.swift in Sources */,
 				E29C861628CB960900F49009 /* HomeViewController.swift in Sources */,
 				E29C85D928CB8D2600F49009 /* SceneDelegate.swift in Sources */,
-				E29C85E128CB8D2600F49009 /* NotesApp.xcdatamodeld in Sources */,
+				E26B0B6728CBB88D003017C5 /* Notes+CoreDataProperties.swift in Sources */,
 				E29C860B28CB8F7E00F49009 /* webService.swift in Sources */,
 				E29C860F28CB8FCC00F49009 /* notesList.swift in Sources */,
 				E29C861928CB965600F49009 /* WebConstants.swift in Sources */,

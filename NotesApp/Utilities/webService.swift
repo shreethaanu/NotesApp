@@ -18,9 +18,9 @@ class Webservice {
             } else if let data = data {
                 let notesList = try? JSONDecoder().decode(NotesList.self, from: data)
                 if let notesList = notesList {
-                    completion(notesList.notes)
+                    completion(notesList.notesData)
                 }
-                print(notesList?.notes)
+                print(notesList?.notesData)
             }
         }.resume()
     }
