@@ -17,6 +17,8 @@
 		E29C85F128CB8D2700F49009 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85F028CB8D2700F49009 /* NotesAppTests.swift */; };
 		E29C85FB28CB8D2700F49009 /* NotesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85FA28CB8D2700F49009 /* NotesAppUITests.swift */; };
 		E29C85FD28CB8D2700F49009 /* NotesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85FC28CB8D2700F49009 /* NotesAppUITestsLaunchTests.swift */; };
+		E29C860B28CB8F7E00F49009 /* webService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C860A28CB8F7E00F49009 /* webService.swift */; };
+		E29C860F28CB8FCC00F49009 /* notesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C860E28CB8FCC00F49009 /* notesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		E29C85F628CB8D2700F49009 /* NotesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E29C85FA28CB8D2700F49009 /* NotesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppUITests.swift; sourceTree = "<group>"; };
 		E29C85FC28CB8D2700F49009 /* NotesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E29C860A28CB8F7E00F49009 /* webService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webService.swift; sourceTree = "<group>"; };
+		E29C860E28CB8FCC00F49009 /* notesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notesList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		E29C85D528CB8D2600F49009 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				E29C860C28CB8F9200F49009 /* Home */,
+				E29C860928CB8F2500F49009 /* WebService */,
 				E29C85D628CB8D2600F49009 /* AppDelegate.swift */,
 				E29C85D828CB8D2600F49009 /* SceneDelegate.swift */,
 				E29C85DA28CB8D2600F49009 /* ViewController.swift */,
@@ -128,6 +134,38 @@
 				E29C85FC28CB8D2700F49009 /* NotesAppUITestsLaunchTests.swift */,
 			);
 			path = NotesAppUITests;
+			sourceTree = "<group>";
+		};
+		E29C860928CB8F2500F49009 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				E29C860A28CB8F7E00F49009 /* webService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		E29C860C28CB8F9200F49009 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E29C861028CB8FE200F49009 /* viewModel */,
+				E29C860D28CB8FB000F49009 /* model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E29C860D28CB8FB000F49009 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E29C860E28CB8FCC00F49009 /* notesList.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		E29C861028CB8FE200F49009 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +303,8 @@
 				E29C85D728CB8D2600F49009 /* AppDelegate.swift in Sources */,
 				E29C85D928CB8D2600F49009 /* SceneDelegate.swift in Sources */,
 				E29C85E128CB8D2600F49009 /* NotesApp.xcdatamodeld in Sources */,
+				E29C860B28CB8F7E00F49009 /* webService.swift in Sources */,
+				E29C860F28CB8FCC00F49009 /* notesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
