@@ -8,7 +8,174 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  static let syncingBadgeKind = "syncing-badge-kind"
+
+    var myData: CardDetailItem = CardDetailItem(title: "data")
+    var myData1: CardDetailItem = CardDetailItem(title: "samop;iyuiy")
+    var myData2: CardDetailItem = CardDetailItem(title: "data23232")
+    var myData12: CardDetailItem = CardDetailItem(title: "sampleeeeeeee")
+
+  enum Section {
+    case albumBody
+  }
+
+  var dataSource: UICollectionViewDiffableDataSource<Section, CardDetailItem>! = nil
+
+    @IBOutlet weak var notesListCollectionView: UICollectionView!
+    
+  var albumURL: URL?
+
+  convenience init(withPhotosFromDirectory directory: URL) {
+    self.init()
+    albumURL = directory
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    //configureCollectionView()
+      notesListCollectionView.collectionViewLayout = generateLayout()
+      notesListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    configureDataSource()
+  }
+}
+
+extension HomeViewController {
+
+  func configureDataSource() {
+    dataSource = UICollectionViewDiffableDataSource
+      <Section, CardDetailItem>(collectionView: notesListCollectionView) {
+        (collectionView: UICollectionView, indexPath: IndexPath, detailItem: CardDetailItem) -> UICollectionViewCell? in
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCollectionViewCell", for: indexPath) as! NotesCollectionViewCell
+        print(cell)
+        cell.backgroundColor = .random
+        cell.notesTitle.text = detailItem.title
+        return cell
     }
+      dataSource.supplementaryViewProvider = {
+        (
+        collectionView: UICollectionView,
+        kind: String,
+        indexPath: IndexPath) -> UICollectionReusableView? in
+
+        let hasSyncBadge = indexPath.row % Int.random(in: 1...6) == 0
+
+        if let badgeView = collectionView.dequeueReusableSupplementaryView(
+          ofKind: kind,
+          withReuseIdentifier: SyncingBadgeView.reuseIdentifier,
+          for: indexPath) as? SyncingBadgeView {
+
+          badgeView.isHidden = !hasSyncBadge
+          return badgeView
+        } else {
+          fatalError("Cannot create new supplementary")
+        }
+      }
+    // load our initial data
+    let snapshot = snapshotForCurrentState()
+    dataSource.apply(snapshot, animatingDifferences: false)
+  }
+
+  func generateLayout() -> UICollectionViewLayout {
+    // We have three row styles
+    // Style 1: 'Full'
+    // A full width photo
+    // Style 2: 'Main with pair'
+    // A 2/3 wid th photo with two 1/3 width photos stacked vertically
+    // Style 3: 'Triplet'
+    // Three 1/3 width photos stacked horizontally
+
+    // Syncing badge
+    let syncingBadgeAnchor = NSCollectionLayoutAnchor(edges: [.top, .trailing], fractionalOffset: CGPoint(x: -0.3, y: 0.3))
+    let syncingBadge = NSCollectionLayoutSupplementaryItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .absolute(20),
+        heightDimension: .absolute(20)),
+      elementKind: HomeViewController.syncingBadgeKind,
+      containerAnchor: syncingBadgeAnchor)
+
+    // Full
+    let fullPhotoItem = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(2/3)),
+      supplementaryItems: [syncingBadge])
+    fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+
+    // Main with pair
+    let mainItem = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(2/3),
+        heightDimension: .fractionalHeight(1.0)))
+    mainItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+
+    let pairItem = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(0.5)))
+    pairItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+
+    let trailingGroup = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1/3),
+        heightDimension: .fractionalHeight(1.0)),
+      subitem: pairItem,
+      count: 2)
+
+    let mainWithPairGroup = NSCollectionLayoutGroup.horizontal(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(4/9)),
+      subitems: [mainItem, trailingGroup])
+
+    // Triplet
+    let tripletItem = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1/3),
+        heightDimension: .fractionalHeight(1.0)))
+    tripletItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+
+    let tripletGroup = NSCollectionLayoutGroup.horizontal(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(2/9)),
+      subitems: [tripletItem, tripletItem, tripletItem])
+
+    // Reversed main with pair
+    let mainWithPairReversedGroup = NSCollectionLayoutGroup.horizontal(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(4/9)),
+      subitems: [trailingGroup, mainItem])
+
+    let nestedGroup = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(16/9)),
+      subitems: [mainWithPairGroup])
+
+    let section = NSCollectionLayoutSection(group: nestedGroup)
+    let layout = UICollectionViewCompositionalLayout(section: section)
+    return layout
+  }
+
+  func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, CardDetailItem> {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, CardDetailItem>()
+    snapshot.appendSections([Section.albumBody])
+    let items = itemsForAlbum()
+    snapshot.appendItems(items)
+    return snapshot
+  }
+
+  func itemsForAlbum() -> [CardDetailItem] {
+      return [myData, myData1, myData2, myData12]
+  }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+//    let photoDetailVC = NotesDetailViewController(photoURL: item.photoURL)
+//    navigationController?.pushViewController(photoDetailVC, animated: true)
+      print("tapped tapped !! -- ")
+  }
 }

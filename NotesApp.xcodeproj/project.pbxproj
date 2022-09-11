@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E224629D28CDDFCB00564758 /* CardDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224629C28CDDFCB00564758 /* CardDetailItem.swift */; };
+		E22462A028CDE07E00564758 /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224629F28CDE07E00564758 /* NotesDetailViewController.swift */; };
+		E22462A228CDE26B00564758 /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22462A128CDE26B00564758 /* NotesCollectionViewCell.swift */; };
+		E22462A428CE643C00564758 /* SyncingBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22462A328CE643C00564758 /* SyncingBadgeView.swift */; };
 		E26B0B6628CBB88D003017C5 /* Notes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */; };
 		E26B0B6728CBB88D003017C5 /* Notes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */; };
 		E26B0B6928CBB921003017C5 /* NotesApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = E29C85DF28CB8D2600F49009 /* NotesApp.xcdatamodeld */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E224629C28CDDFCB00564758 /* CardDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailItem.swift; sourceTree = "<group>"; };
+		E224629F28CDE07E00564758 /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
+		E22462A128CDE26B00564758 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
+		E22462A328CE643C00564758 /* SyncingBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncingBadgeView.swift; sourceTree = "<group>"; };
 		E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E26B0B6B28CC3FD9003017C5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -94,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E224629E28CDE05700564758 /* NotesDetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				E224629F28CDE07E00564758 /* NotesDetailViewController.swift */,
+			);
+			path = NotesDetailPage;
+			sourceTree = "<group>";
+		};
 		E26B0B6A28CBB96C003017C5 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +142,7 @@
 		E29C85D528CB8D2600F49009 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				E224629E28CDE05700564758 /* NotesDetailPage */,
 				E29C860C28CB8F9200F49009 /* Home */,
 				E29C861128CB947E00F49009 /* Utilities */,
 				E29C85D628CB8D2600F49009 /* AppDelegate.swift */,
@@ -191,6 +208,7 @@
 				E29C861228CB949500F49009 /* ImageUtility.swift */,
 				E29C860A28CB8F7E00F49009 /* webService.swift */,
 				E29C861828CB965600F49009 /* WebConstants.swift */,
+				E22462A328CE643C00564758 /* SyncingBadgeView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -206,6 +224,8 @@
 		E29C861728CB961500F49009 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E224629C28CDDFCB00564758 /* CardDetailItem.swift */,
+				E22462A128CDE26B00564758 /* NotesCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,11 +368,15 @@
 				E29C85D728CB8D2600F49009 /* AppDelegate.swift in Sources */,
 				E26B0B6628CBB88D003017C5 /* Notes+CoreDataClass.swift in Sources */,
 				E29C861628CB960900F49009 /* HomeViewController.swift in Sources */,
+				E22462A228CDE26B00564758 /* NotesCollectionViewCell.swift in Sources */,
+				E22462A028CDE07E00564758 /* NotesDetailViewController.swift in Sources */,
 				E29C85D928CB8D2600F49009 /* SceneDelegate.swift in Sources */,
 				E26B0B6728CBB88D003017C5 /* Notes+CoreDataProperties.swift in Sources */,
 				E29C860B28CB8F7E00F49009 /* webService.swift in Sources */,
 				E29C860F28CB8FCC00F49009 /* notesList.swift in Sources */,
+				E22462A428CE643C00564758 /* SyncingBadgeView.swift in Sources */,
 				E29C861928CB965600F49009 /* WebConstants.swift in Sources */,
+				E224629D28CDDFCB00564758 /* CardDetailItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,13 +16,65 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CcQ-Ei-IJY">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N7Y-Sp-T5z">
+                                    <size key="itemSize" width="166" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NotesCollectionViewCell" id="jvf-LP-vFN" customClass="NotesCollectionViewCell" customModule="NotesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="He3-gW-sXb">
+                                            <rect key="frame" x="0.0" y="0.0" width="166" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-sH-KD0">
+                                                    <rect key="frame" x="38" y="54" width="90" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LL8-sH-KD0" firstAttribute="centerX" secondItem="He3-gW-sXb" secondAttribute="centerX" id="44j-hJ-5se"/>
+                                                <constraint firstItem="LL8-sH-KD0" firstAttribute="centerY" secondItem="He3-gW-sXb" secondAttribute="centerY" id="BIu-zp-p5c"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="166" height="128"/>
+                                        <connections>
+                                            <outlet property="notesTitle" destination="LL8-sH-KD0" id="HVS-lh-rJC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="JGD-ET-Vgt"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Q2c-1O-oKu"/>
+                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="pVK-OI-6pL"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CcQ-Ei-IJY" secondAttribute="trailing" id="TCa-WK-kiG"/>
+                            <constraint firstItem="CcQ-Ei-IJY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ifA-dP-NaY"/>
+                            <constraint firstItem="CcQ-Ei-IJY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="kMQ-Er-LCW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CcQ-Ei-IJY" secondAttribute="bottom" id="tgE-6u-2WY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="notesListCollectionView" destination="CcQ-Ei-IJY" id="WeI-Fh-SSu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61" y="98"/>
+            <point key="canvasLocation" x="-381.15942028985512" y="77.678571428571431"/>
         </scene>
     </scenes>
     <resources>
