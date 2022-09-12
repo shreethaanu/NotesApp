@@ -7,16 +7,13 @@
 
 import Foundation
 
-struct NotesList: Decodable {
-    let notesData: [NotesData]
-}
 
 struct NotesData: Decodable {
-    let id: String
-    let title: String
-    let body: String
-    let created_time: Int
-    let image: String
+    let id: String?
+    let title: String?
+    let body: String?
+    let created_time: Int?
+    let image: String?
 }
 
 /**

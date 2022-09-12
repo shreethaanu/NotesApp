@@ -7,46 +7,59 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class HomeViewModel {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    func fetchFromApi(){
+    var notesData: [NotesData] = []
+
+    func fetchFromApi() {
         let url = URL(string: GlobalConstant.notesApi)!
-        Webservice().getNotes(url: url) { articles in
-            if let articles = articles {
-              //  self.articleListVM = ArticleListViewModel(articles: articles)
+        Webservice().getNotes(url: url) { [self] notes in
+            if let notes = notes {
+                self.notesData = notes
+                createData()
             }
         }
     }
-    
+
     func createData(){
         let newitem = Notes(context: context)
-        newitem.title = "test notes statically"
+        for i in notesData {
+            print("items GOING in DB are: ")
+            newitem.title = i.title!
+        }
         do{
             try context.save()
         }
         catch {
-            
         }
-        
     }
     
-    func deleteData(notesData: Notes){
-        context.delete(notesData)
-        do {
-            try context.save()
+    func deleteAllData(entity: String){
+
+//    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+    fetchRequest.returnsObjectsAsFaults = false
+
+    do {
+        let arrUsrObj = try context.fetch(fetchRequest)
+        for usrObj in arrUsrObj as! [NSManagedObject] {
+            context.delete(usrObj)
         }
-        catch {
-            
-        }
+       try context.save() //don't forget
+        } catch let error as NSError {
+        print("delete fail--",error)
+      }
+
     }
     
     func getData(){
         do {
             let items = try context.fetch(Notes.fetchRequest())
-            print(items)
+            print("items inside DB is: ", items)
         }
         catch {
             

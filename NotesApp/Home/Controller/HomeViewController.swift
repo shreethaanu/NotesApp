@@ -10,16 +10,14 @@ import UIKit
 class HomeViewController: UIViewController {
     static let syncingBadgeKind = "syncing-badge-kind"
 
-    var myData: CardDetailItem = CardDetailItem(title: "data")
-    var myData1: CardDetailItem = CardDetailItem(title: "samop;iyuiy")
-    var myData2: CardDetailItem = CardDetailItem(title: "data23232")
-    var myData12: CardDetailItem = CardDetailItem(title: "sampleeeeeeee")
-
+    var myData: CardDetailItem = CardDetailItem(title: "data", id: "1", body: "efg", created_time: 56, image: "img")
+    
     enum Section {
         case albumBody
     }
 
     var dataSource: UICollectionViewDiffableDataSource<Section, CardDetailItem>! = nil
+    var viewModel: HomeViewModel = HomeViewModel()
 
     @IBOutlet weak var notesListCollectionView: UICollectionView!
 
@@ -28,7 +26,18 @@ class HomeViewController: UIViewController {
         notesListCollectionView.collectionViewLayout = generateLayout()
         notesListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         configureDataSource()
+       
     }
+
+    @IBAction func refreshData(_ sender: Any) {
+        viewModel.fetchFromApi()
+    }
+    
+    @IBAction func eraseData(_ sender: Any) {
+        viewModel.getData()
+        viewModel.deleteAllData(entity: "Notes")
+    }
+    
 }
 
 extension HomeViewController {
@@ -38,45 +47,16 @@ extension HomeViewController {
         <Section, CardDetailItem>(collectionView: notesListCollectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, detailItem: CardDetailItem) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCollectionViewCell", for: indexPath) as! NotesCollectionViewCell
-            print(cell)
             cell.backgroundColor = .random
             cell.notesTitle.text = detailItem.title
             return cell
         }
-//        dataSource.supplementaryViewProvider = {
-//            (
-//                collectionView: UICollectionView,
-//                kind: String,
-//                indexPath: IndexPath) -> UICollectionReusableView? in
-//
-//            let hasSyncBadge = indexPath.row % Int.random(in: 1...6) == 0
-//
-//            if let badgeView = collectionView.dequeueReusableSupplementaryView(
-//                ofKind: kind,
-//                withReuseIdentifier: SyncingBadgeView.reuseIdentifier,
-//                for: indexPath) as? SyncingBadgeView {
-//
-//                badgeView.isHidden = !hasSyncBadge
-//                return badgeView
-//            } else {
-//                fatalError("Cannot create new supplementary")
-//            }
-//        }
-        // load our initial data
+    
         let snapshot = snapshotForCurrentState()
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
     func generateLayout() -> UICollectionViewLayout {
-        // We have three row styles
-        // Style 1: 'Full'
-        // A full width photo
-        // Style 2: 'Main with pair'
-        // A 2/3 wid th photo with two 1/3 width photos stacked vertically
-        // Style 3: 'Triplet'
-        // Three 1/3 width photos stacked horizontally
-
-        // Syncing badge
         let syncingBadgeAnchor = NSCollectionLayoutAnchor(edges: [.top, .trailing], fractionalOffset: CGPoint(x: -0.3, y: 0.3))
         let syncingBadge = NSCollectionLayoutSupplementaryItem(
             layoutSize: NSCollectionLayoutSize(
@@ -85,7 +65,6 @@ extension HomeViewController {
             elementKind: HomeViewController.syncingBadgeKind,
             containerAnchor: syncingBadgeAnchor)
 
-        // Full
         let fullPhotoItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
@@ -93,7 +72,6 @@ extension HomeViewController {
             supplementaryItems: [syncingBadge])
         fullPhotoItem.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
 
-        // Main with pair
         let mainItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(2/3),
@@ -119,7 +97,6 @@ extension HomeViewController {
                 heightDimension: .fractionalWidth(4/9)),
             subitems: [mainItem, trailingGroup])
 
-        // Triplet
         let tripletItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1/3),
@@ -132,7 +109,6 @@ extension HomeViewController {
                 heightDimension: .fractionalWidth(2/9)),
             subitems: [tripletItem, tripletItem, tripletItem])
 
-        // Reversed main with pair
         let mainWithPairReversedGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
@@ -143,7 +119,7 @@ extension HomeViewController {
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
                 heightDimension: .fractionalWidth(16/9)),
-            subitems: [mainWithPairGroup])
+            subitems: [mainWithPairGroup, tripletGroup, mainWithPairReversedGroup])
 
         let section = NSCollectionLayoutSection(group: nestedGroup)
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -159,7 +135,7 @@ extension HomeViewController {
     }
 
     func itemsForAlbum() -> [CardDetailItem] {
-        return [myData, myData1, myData2, myData12]
+        return [myData]
     }
 }
 

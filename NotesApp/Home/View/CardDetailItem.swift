@@ -7,15 +7,21 @@
 
 import Foundation
 
-class CardDetailItem: Hashable {
-  let title: String
-//  let thumbnailURL: URL
-  let subitems: [CardDetailItem]
+class CardDetailItem: Hashable, Decodable {
+    let id: String?
+    let title: String?
+    let body: String?
+    let created_time: Int?
+    let image: String?
+    let subitems: [CardDetailItem]
 
-  init(title: String, subitems: [CardDetailItem] = []) {
-    self.title = title
-//  self.thumbnailURL = thumbnailURL
-    self.subitems = subitems
+    init(title: String, id: String, body: String, created_time: Int, image: String, subitems: [CardDetailItem] = []) {
+        self.title = title
+        self.id = id
+        self.body = body
+        self.created_time = created_time
+        self.image = image
+        self.subitems = subitems
   }
 
   func hash(into hasher: inout Hasher) {

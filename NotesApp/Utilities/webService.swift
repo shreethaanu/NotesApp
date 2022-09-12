@@ -13,14 +13,14 @@ class Webservice {
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print(error.localizedDescription)
+                print("error data nilll", error.localizedDescription)
                 completion(nil)
             } else if let data = data {
-                let notesList = try? JSONDecoder().decode(NotesList.self, from: data)
+                let notesList = try? JSONDecoder().decode([NotesData].self, from: data)
                 if let notesList = notesList {
-                    completion(notesList.notesData)
+                  //  print("data is:", [notesList])
+                    completion(notesList)
                 }
-                print(notesList?.notesData)
             }
         }.resume()
     }
