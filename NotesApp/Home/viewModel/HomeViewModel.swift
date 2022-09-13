@@ -19,13 +19,13 @@ class HomeViewModel {
         Webservice().getNotes(url: url) { [self] notes in
             if let notes = notes {
                 self.notesData = notes
-                createData()
+                createData(notesData: notesData)
                 completion(notes)
             }
         }
     }
 
-    func createData() {
+    func createData(notesData: [NotesData]) {
         for i in notesData {
         let newitem = Notes(context: context)
             newitem.title = i.title!

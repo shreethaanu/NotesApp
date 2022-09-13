@@ -20,14 +20,17 @@ class HomeViewController: UIViewController {
     var viewModel: HomeViewModel = HomeViewModel()
 
     @IBOutlet weak var notesListCollectionView: UICollectionView!
+    @IBOutlet weak var addNotes: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNotes.layer.cornerRadius = 20
         notesListCollectionView.collectionViewLayout = generateLayout()
         notesListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         configureDataSource()
+        
     }
-
+    
     @IBAction func refreshData(_ sender: Any) {
         viewModel.fetchFromApi { [self] notes in
             DispatchQueue.main.async {
