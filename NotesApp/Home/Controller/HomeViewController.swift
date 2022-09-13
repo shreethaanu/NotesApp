@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
 
     var dataSource: UICollectionViewDiffableDataSource<Section, CardDetailItem>! = nil
     var viewModel: HomeViewModel = HomeViewModel()
+    private let refreshControl = UIRefreshControl()
 
     @IBOutlet weak var notesListCollectionView: UICollectionView!
     @IBOutlet weak var addNotes: UIButton!
@@ -27,6 +28,9 @@ class HomeViewController: UIViewController {
         addNotes.layer.cornerRadius = 20
         notesListCollectionView.collectionViewLayout = generateLayout()
         notesListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        notesListCollectionView.alwaysBounceVertical = true
+        notesListCollectionView.refreshControl = refreshControl // iOS 10+
         configureDataSource()
         
     }
@@ -43,6 +47,13 @@ class HomeViewController: UIViewController {
     @IBAction func eraseData(_ sender: Any) {
         viewModel.deleteAllData(entity: "Notes")
         configureDataSource()
+    }
+    
+    @objc
+    private func didPullToRefresh(_ sender: Any) {
+        self.configureDataSource()
+        self.notesListCollectionView.reloadData()
+        refreshControl.endRefreshing()
     }
 }
 
