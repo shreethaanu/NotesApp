@@ -36,7 +36,6 @@ class HomeViewController: UIViewController {
     @IBAction func eraseData(_ sender: Any) {
         viewModel.deleteAllData(entity: "Notes")
     }
-
 }
 
 extension HomeViewController {
@@ -128,13 +127,9 @@ extension HomeViewController {
     func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, CardDetailItem> {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CardDetailItem>()
         snapshot.appendSections([Section.albumBody])
-        let items = itemsForAlbum()
+        let items = viewModel.getData()
         snapshot.appendItems(items)
         return snapshot
-    }
-
-    func itemsForAlbum() -> [CardDetailItem] {
-        return [myData]
     }
 }
 

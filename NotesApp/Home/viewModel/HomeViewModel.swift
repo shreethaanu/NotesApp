@@ -19,7 +19,6 @@ class HomeViewModel {
         Webservice().getNotes(url: url) { [self] notes in
             if let notes = notes {
                 self.notesData = notes
-                print(notesData)
                 createData()
             }
         }
@@ -37,30 +36,33 @@ class HomeViewModel {
         }
     }
     
-    func deleteAllData(entity: String){
-
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-    fetchRequest.returnsObjectsAsFaults = false
-
-    do {
-        let arrUsrObj = try context.fetch(fetchRequest)
-        for usrObj in arrUsrObj as! [NSManagedObject] {
-            context.delete(usrObj)
-        }
-       try context.save()
+    func deleteAllData(entity: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let arrUsrObj = try context.fetch(fetchRequest)
+            for usrObj in arrUsrObj as! [NSManagedObject] {
+                context.delete(usrObj)
+            }
+            try context.save()
         } catch let error as NSError {
-        print("delete fail--",error)
-      }
-
+            print("delete fail--",error)
+        }
     }
     
-    func getData(){
+    func getData() -> [CardDetailItem] {
+        var cardDetailItems: [CardDetailItem] = []
         do {
             let items = try context.fetch(Notes.fetchRequest())
-            print("items inside DB is: ", items)
+            for i in items {
+                print("items inside DB is: ", i)
+                let cardData = CardDetailItem(title: i.title ?? "", id: i.id ?? "", body: i.body ?? "", created_time: Int(i.created_time) ?? 0, image: i.image ?? "")
+                cardDetailItems.append(cardData)
+            }
         }
         catch {
-            
         }
+        return cardDetailItems
     }
 }
