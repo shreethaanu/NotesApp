@@ -19,28 +19,26 @@ class HomeViewModel {
         Webservice().getNotes(url: url) { [self] notes in
             if let notes = notes {
                 self.notesData = notes
+                print(notesData)
                 createData()
             }
         }
     }
 
     func createData(){
-        let newitem = Notes(context: context)
         for i in notesData {
-            print("items GOING in DB are: ")
+        let newitem = Notes(context: context)
             newitem.title = i.title!
-        }
         do{
             try context.save()
         }
         catch {
         }
+        }
     }
     
     func deleteAllData(entity: String){
 
-//    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//    let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
     fetchRequest.returnsObjectsAsFaults = false
 
@@ -49,7 +47,7 @@ class HomeViewModel {
         for usrObj in arrUsrObj as! [NSManagedObject] {
             context.delete(usrObj)
         }
-       try context.save() //don't forget
+       try context.save()
         } catch let error as NSError {
         print("delete fail--",error)
       }

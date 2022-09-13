@@ -34,10 +34,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func eraseData(_ sender: Any) {
-        viewModel.getData()
         viewModel.deleteAllData(entity: "Notes")
     }
-    
+
 }
 
 extension HomeViewController {
