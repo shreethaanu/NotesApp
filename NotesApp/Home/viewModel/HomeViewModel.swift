@@ -14,17 +14,18 @@ class HomeViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var notesData: [NotesData] = []
 
-    func fetchFromApi() {
+    func fetchFromApi(completion: @escaping ([NotesData]?) -> ()) {
         let url = URL(string: GlobalConstant.notesApi)!
         Webservice().getNotes(url: url) { [self] notes in
             if let notes = notes {
                 self.notesData = notes
                 createData()
+                completion(notes)
             }
         }
     }
 
-    func createData(){
+    func createData() {
         for i in notesData {
         let newitem = Notes(context: context)
             newitem.title = i.title!
@@ -57,7 +58,7 @@ class HomeViewModel {
             let items = try context.fetch(Notes.fetchRequest())
             for i in items {
                 print("items inside DB is: ", i)
-                let cardData = CardDetailItem(title: i.title ?? "", id: i.id ?? "", body: i.body ?? "", created_time: Int(i.created_time) ?? 0, image: i.image ?? "")
+                let cardData = CardDetailItem(title: i.title ?? "", id: i.id ?? "", body: i.body ?? "", created_time: Int(i.created_time) , image: i.image ?? "")
                 cardDetailItems.append(cardData)
             }
         }

@@ -26,15 +26,20 @@ class HomeViewController: UIViewController {
         notesListCollectionView.collectionViewLayout = generateLayout()
         notesListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         configureDataSource()
-       
     }
 
     @IBAction func refreshData(_ sender: Any) {
-        viewModel.fetchFromApi()
+        viewModel.fetchFromApi { [self] notes in
+            DispatchQueue.main.async {
+                self.configureDataSource()
+                self.notesListCollectionView.reloadData()
+            }
+        }
     }
     
     @IBAction func eraseData(_ sender: Any) {
         viewModel.deleteAllData(entity: "Notes")
+        configureDataSource()
     }
 }
 
@@ -92,7 +97,7 @@ extension HomeViewController {
         let mainWithPairGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalWidth(4/9)),
+                heightDimension: .fractionalWidth(5/9)),
             subitems: [mainItem, trailingGroup])
 
         let tripletItem = NSCollectionLayoutItem(

@@ -34,17 +34,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="166" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-sH-KD0">
-                                                    <rect key="frame" x="8" y="54" width="150" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LL8-sH-KD0">
+                                                    <rect key="frame" x="8" y="5" width="150" height="118"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="LL8-sH-KD0" secondAttribute="bottom" constant="5" id="3ew-9B-PnX"/>
                                                 <constraint firstItem="LL8-sH-KD0" firstAttribute="centerX" secondItem="He3-gW-sXb" secondAttribute="centerX" id="44j-hJ-5se"/>
                                                 <constraint firstAttribute="trailing" secondItem="LL8-sH-KD0" secondAttribute="trailing" constant="8" id="7bD-X4-AJz"/>
                                                 <constraint firstItem="LL8-sH-KD0" firstAttribute="centerY" secondItem="He3-gW-sXb" secondAttribute="centerY" id="BIu-zp-p5c"/>
+                                                <constraint firstItem="LL8-sH-KD0" firstAttribute="top" secondItem="He3-gW-sXb" secondAttribute="top" constant="5" id="XC9-qf-Q85"/>
                                                 <constraint firstItem="LL8-sH-KD0" firstAttribute="leading" secondItem="He3-gW-sXb" secondAttribute="leading" constant="8" id="q6K-f5-tTX"/>
                                             </constraints>
                                         </collectionViewCellContentView>
