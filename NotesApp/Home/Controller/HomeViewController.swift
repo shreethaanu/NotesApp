@@ -155,5 +155,12 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("tapped tapped !! -- ")
+        let items = viewModel.getData()
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "addNotesViewController") as! addNotesViewController
+        nextViewController.notesDetail = items[indexPath.row]
+        nextViewController.isDetailPageController = true
+        print(items[indexPath.row])
+        self.present(nextViewController, animated:true, completion:nil)
     }
 }

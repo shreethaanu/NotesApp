@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E21F817228D19682000849DC /* Notes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F817128D19682000849DC /* Notes+CoreDataProperties.swift */; };
 		E224629D28CDDFCB00564758 /* CardDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224629C28CDDFCB00564758 /* CardDetailItem.swift */; };
 		E22462A028CDE07E00564758 /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224629F28CDE07E00564758 /* NotesDetailViewController.swift */; };
 		E22462A228CDE26B00564758 /* NotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22462A128CDE26B00564758 /* NotesCollectionViewCell.swift */; };
 		E22462A428CE643C00564758 /* SyncingBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22462A328CE643C00564758 /* SyncingBadgeView.swift */; };
 		E25E6BEE28D0F65500748043 /* addNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E6BED28D0F65500748043 /* addNotesViewController.swift */; };
 		E26B0B6628CBB88D003017C5 /* Notes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */; };
-		E26B0B6728CBB88D003017C5 /* Notes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */; };
 		E26B0B6928CBB921003017C5 /* NotesApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = E29C85DF28CB8D2600F49009 /* NotesApp.xcdatamodeld */; };
 		E26B0B6C28CC3FD9003017C5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B0B6B28CC3FD9003017C5 /* HomeViewModel.swift */; };
 		E29C85D728CB8D2600F49009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29C85D628CB8D2600F49009 /* AppDelegate.swift */; };
@@ -50,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E21F817128D19682000849DC /* Notes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E224629C28CDDFCB00564758 /* CardDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailItem.swift; sourceTree = "<group>"; };
 		E224629F28CDE07E00564758 /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
 		E22462A128CDE26B00564758 /* NotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		E25E6BEB28CF9B6700748043 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		E25E6BED28D0F65500748043 /* addNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNotesViewController.swift; sourceTree = "<group>"; };
 		E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E26B0B6B28CC3FD9003017C5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E29C85D328CB8D2600F49009 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E29C85D628CB8D2600F49009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				E26B0B6428CBB88D003017C5 /* Notes+CoreDataClass.swift */,
-				E26B0B6528CBB88D003017C5 /* Notes+CoreDataProperties.swift */,
+				E21F817128D19682000849DC /* Notes+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -384,8 +384,8 @@
 				E22462A228CDE26B00564758 /* NotesCollectionViewCell.swift in Sources */,
 				E22462A028CDE07E00564758 /* NotesDetailViewController.swift in Sources */,
 				E25E6BEE28D0F65500748043 /* addNotesViewController.swift in Sources */,
+				E21F817228D19682000849DC /* Notes+CoreDataProperties.swift in Sources */,
 				E29C85D928CB8D2600F49009 /* SceneDelegate.swift in Sources */,
-				E26B0B6728CBB88D003017C5 /* Notes+CoreDataProperties.swift in Sources */,
 				E29C860B28CB8F7E00F49009 /* webService.swift in Sources */,
 				E29C860F28CB8FCC00F49009 /* notesList.swift in Sources */,
 				E22462A428CE643C00564758 /* SyncingBadgeView.swift in Sources */,

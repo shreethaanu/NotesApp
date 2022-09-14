@@ -28,7 +28,11 @@ class HomeViewModel {
     func createData(notesData: [NotesData]) {
         for i in notesData {
         let newitem = Notes(context: context)
-            newitem.title = i.title!
+            newitem.title = i.title
+            newitem.body = i.body
+            newitem.image = i.image ?? ""
+            newitem.id = i.id
+            newitem.created_time = Int64(i.created_time ?? 00)
         do{
             try context.save()
         }

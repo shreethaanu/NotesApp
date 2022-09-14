@@ -155,7 +155,7 @@
         <!--Add Notes View Controller-->
         <scene sceneID="JS4-bg-5tk">
             <objects>
-                <viewController id="tD5-eU-6G0" customClass="addNotesViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addNotesViewController" id="tD5-eU-6G0" customClass="addNotesViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wqr-0G-Aka">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54x-8P-Z7i">
-                                        <rect key="frame" x="22" y="63.5" width="51" height="43"/>
+                                        <rect key="frame" x="10" y="63.5" width="51" height="43"/>
                                         <color key="backgroundColor" red="0.0" green="0.13468389189999999" blue="0.25936211339999998" alpha="0.48410926869999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="8wN-Kh-R8W"/>
@@ -226,12 +226,12 @@
                                     <constraint firstItem="RAp-lY-ppV" firstAttribute="centerY" secondItem="yIi-Gk-oMo" secondAttribute="centerY" constant="15" id="ZMg-wt-CHw"/>
                                     <constraint firstAttribute="trailing" secondItem="OOx-Uu-DSX" secondAttribute="trailing" constant="10" id="c0U-Pl-s9s"/>
                                     <constraint firstAttribute="height" constant="140" id="kFg-AM-6vQ"/>
-                                    <constraint firstItem="54x-8P-Z7i" firstAttribute="leading" secondItem="yIi-Gk-oMo" secondAttribute="leading" constant="22" id="w5R-f4-2XL"/>
+                                    <constraint firstItem="54x-8P-Z7i" firstAttribute="leading" secondItem="yIi-Gk-oMo" secondAttribute="leading" constant="10" id="w5R-f4-2XL"/>
                                     <constraint firstItem="RAp-lY-ppV" firstAttribute="centerX" secondItem="yIi-Gk-oMo" secondAttribute="centerX" id="z3T-ED-ZMq"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VaQ-zg-LEd">
-                                <rect key="frame" x="20" y="189" width="374" height="47"/>
+                                <rect key="frame" x="20" y="315" width="374" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="KCo-NK-CfZ"/>
                                 </constraints>
@@ -239,25 +239,34 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type something here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bmd-g4-jHt">
-                                <rect key="frame" x="20" y="256" width="374" height="551"/>
+                                <rect key="frame" x="20" y="382" width="374" height="425"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nPD-cA-5vW">
+                                <rect key="frame" x="10" y="150" width="394" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="YwO-Bh-F35"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="M4g-xa-eIu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="VaQ-zg-LEd" firstAttribute="top" secondItem="nPD-cA-5vW" secondAttribute="bottom" constant="5" id="8VK-o0-cTi"/>
                             <constraint firstItem="yIi-Gk-oMo" firstAttribute="leading" secondItem="M4g-xa-eIu" secondAttribute="leading" id="9kI-0L-AOh"/>
                             <constraint firstItem="bmd-g4-jHt" firstAttribute="trailing" secondItem="VaQ-zg-LEd" secondAttribute="trailing" id="Ce2-h3-HKf"/>
+                            <constraint firstItem="nPD-cA-5vW" firstAttribute="top" secondItem="yIi-Gk-oMo" secondAttribute="bottom" constant="10" id="Dys-Z8-127"/>
                             <constraint firstItem="yIi-Gk-oMo" firstAttribute="trailing" secondItem="M4g-xa-eIu" secondAttribute="trailing" id="KoZ-1R-d4z"/>
                             <constraint firstItem="bmd-g4-jHt" firstAttribute="top" secondItem="VaQ-zg-LEd" secondAttribute="bottom" constant="20" id="LTh-rN-ykd"/>
                             <constraint firstItem="M4g-xa-eIu" firstAttribute="bottom" secondItem="bmd-g4-jHt" secondAttribute="bottom" constant="35" id="VF5-hw-UrI"/>
                             <constraint firstItem="VaQ-zg-LEd" firstAttribute="leading" secondItem="M4g-xa-eIu" secondAttribute="leading" constant="20" id="cWK-B0-TRg"/>
+                            <constraint firstItem="M4g-xa-eIu" firstAttribute="trailing" secondItem="nPD-cA-5vW" secondAttribute="trailing" constant="10" id="kET-0v-xGI"/>
                             <constraint firstItem="yIi-Gk-oMo" firstAttribute="top" secondItem="wqr-0G-Aka" secondAttribute="top" id="nPA-69-eDD"/>
+                            <constraint firstItem="nPD-cA-5vW" firstAttribute="leading" secondItem="M4g-xa-eIu" secondAttribute="leading" constant="10" id="nzv-q1-0Ti"/>
                             <constraint firstItem="M4g-xa-eIu" firstAttribute="trailing" secondItem="VaQ-zg-LEd" secondAttribute="trailing" constant="20" id="rOz-vw-Ou9"/>
-                            <constraint firstItem="VaQ-zg-LEd" firstAttribute="top" secondItem="yIi-Gk-oMo" secondAttribute="bottom" constant="49" id="rrF-bY-EJe"/>
                             <constraint firstItem="bmd-g4-jHt" firstAttribute="leading" secondItem="VaQ-zg-LEd" secondAttribute="leading" id="xgR-hy-LUD"/>
                         </constraints>
                     </view>
@@ -265,6 +274,8 @@
                     <connections>
                         <outlet property="addItemsStack" destination="OOx-Uu-DSX" id="b0r-6N-pGi"/>
                         <outlet property="body" destination="bmd-g4-jHt" id="xca-8z-Bdy"/>
+                        <outlet property="coverPhoto" destination="nPD-cA-5vW" id="wMx-BE-uFb"/>
+                        <outlet property="coverPhotoHeight" destination="YwO-Bh-F35" id="wYh-OX-FLd"/>
                         <outlet property="titleText" destination="VaQ-zg-LEd" id="CMd-s3-lYb"/>
                     </connections>
                 </viewController>

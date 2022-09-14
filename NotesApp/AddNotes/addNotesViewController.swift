@@ -12,15 +12,39 @@ class addNotesViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var addItemsStack: UIStackView!
     @IBOutlet weak var body: UITextView!
     @IBOutlet weak var titleText: UITextField!
-    
-    var notesListData: [NotesData] = []
-    var viewModel: HomeViewModel = HomeViewModel()
+    @IBOutlet weak var coverPhoto: UIImageView!
+    @IBOutlet weak var coverPhotoHeight: NSLayoutConstraint!
 
+    var notesListData: [NotesData] = []
+    var imageData: Data?
+    var notesDetail: CardDetailItem? = nil
+    var viewModel: HomeViewModel = HomeViewModel()
+    var isDetailPageController: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addItemsStack.isHidden = true
+        constructViews()
     }
     
+    func populateDetailView(){
+        titleText.text = notesDetail?.title
+        body.text = notesDetail?.body
+    }
+
+    func constructViews(){
+        if notesDetail?.image == "" {
+            coverPhotoHeight.constant = 0
+        }
+        else {
+            coverPhotoHeight.constant = 160
+            coverPhoto.downloaded(from: (notesDetail?.image)!)
+        }
+        if isDetailPageController {
+            addItemsStack.isHidden = true
+        }
+        populateDetailView()
+    }
+
     @IBAction func addAttachment(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.allowsEditing = false //If you want edit option set "true"
@@ -31,17 +55,22 @@ class addNotesViewController: UIViewController, UINavigationControllerDelegate, 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let tempImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        print(tempImage.pngData())
+        imageData = tempImage.jpegData(compressionQuality: 1.0)
+        if imageData != nil {
+            coverPhotoHeight.constant = 160
+            coverPhoto.image = tempImage
+        }
         self.dismiss(animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func addNotes(_ sender: Any) {
-        let notes = NotesData(id: "0", title: titleText.text, body: body.text, created_time: 000, image: "")
+        let notes = NotesData(id: "0", title: titleText.text, body: body.text, created_time: 000, image: "", storedImage: imageData)
         notesListData = [notes]
         viewModel.createData(notesData: notesListData)
+        showAlert(withTitle: "Success", withMessage: "Data added successfully")
     }
 }

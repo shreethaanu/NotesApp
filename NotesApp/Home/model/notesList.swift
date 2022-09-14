@@ -14,6 +14,7 @@ struct NotesData: Decodable {
     let body: String?
     let created_time: Int?
     let image: String?
+    let storedImage: Data?
 }
 
 /**
