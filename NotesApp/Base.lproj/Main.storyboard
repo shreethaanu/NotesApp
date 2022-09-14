@@ -152,10 +152,10 @@
             </objects>
             <point key="canvasLocation" x="-757" y="127"/>
         </scene>
-        <!--Add Notes View Controller-->
+        <!--Notes Detail View Controller-->
         <scene sceneID="JS4-bg-5tk">
             <objects>
-                <viewController storyboardIdentifier="addNotesViewController" id="tD5-eU-6G0" customClass="addNotesViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notesDetailViewController" id="tD5-eU-6G0" customClass="notesDetailViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wqr-0G-Aka">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,7 +231,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VaQ-zg-LEd">
-                                <rect key="frame" x="20" y="315" width="374" height="47"/>
+                                <rect key="frame" x="20" y="155" width="374" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="KCo-NK-CfZ"/>
                                 </constraints>
@@ -239,16 +239,16 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type something here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bmd-g4-jHt">
-                                <rect key="frame" x="20" y="382" width="374" height="425"/>
+                                <rect key="frame" x="20" y="222" width="374" height="585"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nPD-cA-5vW">
-                                <rect key="frame" x="10" y="150" width="394" height="160"/>
+                                <rect key="frame" x="10" y="150" width="394" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="YwO-Bh-F35"/>
+                                    <constraint firstAttribute="height" id="YwO-Bh-F35"/>
                                 </constraints>
                             </imageView>
                         </subviews>

@@ -33,6 +33,7 @@ class HomeViewModel {
             newitem.image = i.image ?? ""
             newitem.id = i.id
             newitem.created_time = Int64(i.created_time ?? 00)
+            newitem.storedImage = i.storedImage
         do{
             try context.save()
         }
@@ -62,7 +63,7 @@ class HomeViewModel {
             let items = try context.fetch(Notes.fetchRequest())
             for i in items {
                 print("items inside DB is: ", i)
-                let cardData = CardDetailItem(title: i.title ?? "", id: i.id ?? "", body: i.body ?? "", created_time: Int(i.created_time) , image: i.image ?? "")
+                let cardData = CardDetailItem(title: i.title ?? "", id: i.id ?? "", body: i.body ?? "", created_time: Int(i.created_time) , image: i.image ?? "", storedImage: i.storedImage ?? Data())
                 cardDetailItems.append(cardData)
             }
         }

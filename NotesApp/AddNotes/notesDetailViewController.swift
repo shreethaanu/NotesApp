@@ -1,5 +1,5 @@
 //
-//  addNotesViewController.swift
+//  notesDetailViewController.swift
 //  NotesApp
 //
 //  Created by ShreeThaanu on 13/09/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class addNotesViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class notesDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var addItemsStack: UIStackView!
     @IBOutlet weak var body: UITextView!
@@ -26,23 +26,38 @@ class addNotesViewController: UIViewController, UINavigationControllerDelegate, 
         constructViews()
     }
     
-    func populateDetailView(){
+    func populateDetailView() {
         titleText.text = notesDetail?.title
         body.text = notesDetail?.body
+        titleText.isUserInteractionEnabled = false
+        body.isEditable = false
     }
 
-    func constructViews(){
-        if notesDetail?.image == "" {
+    fileprivate func setCoverPhoto() {
+        coverPhotoHeight.constant = 160
+        if notesDetail?.image != "" {
+            coverPhoto.downloaded(from: (notesDetail?.image)!)
+        }
+        else {
+            coverPhoto.image = UIImage(data: (notesDetail?.storedImage)!)
+        }
+    }
+    
+    func constructImageView(){
+        if notesDetail?.image == "" && ((notesDetail?.storedImage?.isEmpty)!) {
             coverPhotoHeight.constant = 0
         }
         else {
-            coverPhotoHeight.constant = 160
-            coverPhoto.downloaded(from: (notesDetail?.image)!)
+            setCoverPhoto()
         }
+    }
+
+    func constructViews(){
         if isDetailPageController {
             addItemsStack.isHidden = true
+            populateDetailView()
+            constructImageView()
         }
-        populateDetailView()
     }
 
     @IBAction func addAttachment(_ sender: Any) {

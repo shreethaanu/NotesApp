@@ -13,14 +13,16 @@ class CardDetailItem: Hashable, Decodable {
     let body: String?
     let created_time: Int?
     let image: String?
+    var storedImage: Data?
     let subitems: [CardDetailItem]
 
-    init(title: String, id: String, body: String, created_time: Int, image: String, subitems: [CardDetailItem] = []) {
+    init(title: String, id: String, body: String, created_time: Int, image: String, storedImage: Data, subitems: [CardDetailItem] = []) {
         self.title = title
         self.id = id
         self.body = body
         self.created_time = created_time
         self.image = image
+        self.storedImage = storedImage
         self.subitems = subitems
   }
 

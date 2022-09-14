@@ -8,9 +8,8 @@
 import Foundation
 
 class Webservice {
-    
-    func getNotes(url: URL, completion: @escaping ([NotesData]?) -> ()) {
 
+    func getNotes(url: URL, completion: @escaping ([NotesData]?) -> ()) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("error data nilll", error.localizedDescription)
@@ -18,7 +17,6 @@ class Webservice {
             } else if let data = data {
                 let notesList = try? JSONDecoder().decode([NotesData].self, from: data)
                 if let notesList = notesList {
-                  //  print("data is:", [notesList])
                     completion(notesList)
                 }
             }

@@ -8,10 +8,9 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+
     static let syncingBadgeKind = "syncing-badge-kind"
 
-    var myData: CardDetailItem = CardDetailItem(title: "data", id: "1", body: "efg", created_time: 56, image: "img")
-    
     enum Section {
         case albumBody
     }
@@ -157,7 +156,7 @@ extension HomeViewController: UICollectionViewDelegate {
         print("tapped tapped !! -- ")
         let items = viewModel.getData()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "addNotesViewController") as! addNotesViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "notesDetailViewController") as! notesDetailViewController
         nextViewController.notesDetail = items[indexPath.row]
         nextViewController.isDetailPageController = true
         print(items[indexPath.row])
