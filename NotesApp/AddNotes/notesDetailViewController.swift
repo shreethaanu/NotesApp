@@ -28,7 +28,7 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
     
     func populateDetailView() {
         titleText.text = notesDetail?.title
-        body.text = notesDetail?.body
+        body.attributedText = returnMarkup()
         titleText.isUserInteractionEnabled = false
         body.isEditable = false
     }
@@ -50,6 +50,13 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
         else {
             setCoverPhoto()
         }
+    }
+
+    func returnMarkup() -> NSAttributedString {
+        guard let attributedString = try? NSAttributedString(markdown: notesDetail?.body ?? "") else {
+            return NSAttributedString(string: notesDetail?.body ?? "")
+        }
+        return attributedString
     }
 
     func constructViews(){

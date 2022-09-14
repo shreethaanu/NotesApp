@@ -230,19 +230,32 @@
                                     <constraint firstItem="RAp-lY-ppV" firstAttribute="centerX" secondItem="yIi-Gk-oMo" secondAttribute="centerX" id="z3T-ED-ZMq"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VaQ-zg-LEd">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="Title here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VaQ-zg-LEd">
                                 <rect key="frame" x="20" y="155" width="374" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="KCo-NK-CfZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Title here">
+                                        <attributes>
+                                            <font key="NSFont" size="36" name="Futura-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type something here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bmd-g4-jHt">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmd-g4-jHt">
                                 <rect key="frame" x="20" y="222" width="374" height="585"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Type something here">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="labelColor"/>
+                                            <font key="NSFont" metaFont="system" size="16"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nPD-cA-5vW">
