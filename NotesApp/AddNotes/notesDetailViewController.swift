@@ -69,7 +69,7 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
 
     @IBAction func addAttachment(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
-        imagePickerController.allowsEditing = false //If you want edit option set "true"
+        imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
