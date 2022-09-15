@@ -77,10 +77,4 @@ class HomeViewModel {
         let sortedDates = items.sorted{ $0.created_time! > $1.created_time!  }
         return sortedDates
     }
-
-    func convertToDate(incoming: Int) -> String {
-        let date = Date(timeIntervalSince1970: Double(incoming))
-         let dateFormatter = DateFormatter()
-         return dateFormatter.string(from: date)
-    }
 }
