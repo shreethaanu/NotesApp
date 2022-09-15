@@ -32,7 +32,7 @@ class HomeViewModel {
             newitem.body = i.body
             newitem.image = i.image ?? ""
             newitem.id = i.id
-            newitem.created_time = Date(timeIntervalSince1970: Double(i.created_time ?? 000))
+            newitem.created_time = Date(timeIntervalSince1970: Double(i.created_time ?? 00))
             newitem.storedImage = i.storedImage
         do{
             try context.save()
@@ -57,7 +57,7 @@ class HomeViewModel {
         }
     }
 
-    func getData() -> [CardDetailItem] {
+    func fetchDataFromDb() -> [CardDetailItem] {
         var cardDetailItems: [CardDetailItem] = []
         do {
             let items = try context.fetch(Notes.fetchRequest())
@@ -72,7 +72,8 @@ class HomeViewModel {
         return cardDetailItems
     }
 
-    func sortChronologically(items: [CardDetailItem]) -> [CardDetailItem] {
+    func getNotesData() -> [CardDetailItem] {
+        let items = fetchDataFromDb()
         let dates = items.compactMap { $0.created_time }
         let sortedDates = items.sorted{ $0.created_time! > $1.created_time!  }
         return sortedDates

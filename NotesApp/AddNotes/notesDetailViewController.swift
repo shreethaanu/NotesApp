@@ -8,13 +8,13 @@
 import UIKit
 
 class notesDetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    
     @IBOutlet weak var addItemsStack: UIStackView!
     @IBOutlet weak var body: UITextView!
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var coverPhoto: UIImageView!
     @IBOutlet weak var coverPhotoHeight: NSLayoutConstraint!
-
+    
     var notesListData: [NotesData] = []
     var imageData: Data?
     var notesDetail: CardDetailItem? = nil
@@ -26,13 +26,13 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
         constructViews()
     }
     
-    func populateDetailView() {
+    fileprivate func populateDetailView() {
         titleText.text = notesDetail?.title
         body.attributedText = returnMarkup()
         titleText.isUserInteractionEnabled = false
         body.isEditable = false
     }
-
+    
     fileprivate func setCoverPhoto() {
         coverPhotoHeight.constant = 160
         if notesDetail?.image != "" {
@@ -43,7 +43,7 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    func constructImageView(){
+    fileprivate func constructImageView(){
         if notesDetail?.image == "" && ((notesDetail?.storedImage?.isEmpty)!) {
             coverPhotoHeight.constant = 0
         }
@@ -51,22 +51,22 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
             setCoverPhoto()
         }
     }
-
-    func returnMarkup() -> NSAttributedString {
+    
+    fileprivate func returnMarkup() -> NSAttributedString {
         guard let attributedString = try? NSAttributedString(markdown: notesDetail?.body ?? "") else {
             return NSAttributedString(string: notesDetail?.body ?? "")
         }
         return attributedString
     }
-
-    func constructViews(){
+    
+    fileprivate func constructViews(){
         if isDetailPageController {
             addItemsStack.isHidden = true
             populateDetailView()
             constructImageView()
         }
     }
-
+    
     @IBAction func addAttachment(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.allowsEditing = false
@@ -84,11 +84,11 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
         }
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func addNotes(_ sender: Any) {
         let notes = NotesData(id: "0", title: titleText.text, body: body.text, created_time: Int(Date().timeIntervalSince1970), image: "", storedImage: imageData)
         notesListData = [notes]

@@ -77,16 +77,14 @@ extension HomeViewController {
     func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, CardDetailItem> {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CardDetailItem>()
         snapshot.appendSections([Section.albumBody])
-        let items = viewModel.getData()
-        snapshot.appendItems(viewModel.sortChronologically(items: items))
+        snapshot.appendItems(viewModel.getNotesData())
         return snapshot
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var items = viewModel.getData()
-        items = viewModel.sortChronologically(items: items)
+        let items = viewModel.getNotesData()
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "notesDetailViewController") as! notesDetailViewController
         nextViewController.notesDetail = items[indexPath.row]
