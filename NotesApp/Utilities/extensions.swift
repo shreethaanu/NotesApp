@@ -51,3 +51,19 @@ extension  UIViewController {
         })
     }
 }
+
+extension String {
+    
+    //MARK:- Convert UTC To Local Date by passing date formats value
+    func UTCToLocal(incomingFormat: String, outGoingFormat: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = incomingFormat
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let dt = dateFormatter.date(from: self)
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = outGoingFormat
+        
+        return dateFormatter.string(from: dt ?? Date())
+    }
+}

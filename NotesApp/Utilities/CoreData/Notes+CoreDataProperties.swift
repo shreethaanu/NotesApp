@@ -18,7 +18,7 @@ extension Notes {
 
     @NSManaged public var archived: String?
     @NSManaged public var body: String?
-    @NSManaged public var created_time: Int64
+    @NSManaged public var created_time: Date
     @NSManaged public var id: String?
     @NSManaged public var image: String?
     @NSManaged public var title: String?

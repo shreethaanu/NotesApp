@@ -90,7 +90,7 @@ class notesDetailViewController: UIViewController, UINavigationControllerDelegat
     }
 
     @IBAction func addNotes(_ sender: Any) {
-        let notes = NotesData(id: "0", title: titleText.text, body: body.text, created_time: 000, image: "", storedImage: imageData)
+        let notes = NotesData(id: "0", title: titleText.text, body: body.text, created_time: Int(Date().timeIntervalSince1970), image: "", storedImage: imageData)
         notesListData = [notes]
         viewModel.createData(notesData: notesListData)
         showAlert(withTitle: "Success", withMessage: "Data added successfully")

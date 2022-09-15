@@ -146,7 +146,7 @@ extension HomeViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CardDetailItem>()
         snapshot.appendSections([Section.albumBody])
         let items = viewModel.getData()
-        snapshot.appendItems(items)
+        snapshot.appendItems(viewModel.sortChronologically(items: items))
         return snapshot
     }
 }
