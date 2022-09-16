@@ -1,4 +1,4 @@
-# NotesApp
+# NotesApp 📝
 
 This is a simple notes app with add, delete feature. Can add attachments too. 
 Fetch notes from API and store it in core data and retrieve it and show to users.
